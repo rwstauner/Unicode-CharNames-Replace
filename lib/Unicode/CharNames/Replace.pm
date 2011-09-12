@@ -79,5 +79,17 @@ sub _charnames_re_str {
 =for :list
 * L<unirep> - Command line version that works like C<echo> or C<cat>
 
+=head1 TODO
+
+=for :list
+* relax requirement for 5.14
+* Rename methods
+* Document methods
+* Document usefulness (runtime)
+* Make use of Sub::Exporter with default options, etc
+* Allow for escaping the opening delimiter?
+* By default ignore non-printing characters (CHARACTER TABULATION, LINE FEED (LF), SPACE, NULL) to avoid confusion
+* aliases?  is this necessary beyond the alias functionality of charnames?
+* a set of default aliases (heart, poo, razzberry)?
 
 =cut

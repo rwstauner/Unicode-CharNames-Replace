@@ -61,4 +61,13 @@ Specify C<--no-option> to turn C<option> off.
 * C<boundaries> - restrict matches to word boundaries: "findcharname" does not replace
 * C<help> - you're looking at it
 
+=head1 TODO
+
+=for :list
+* Better, more consistent option names.
+* Enable less by default?
+* Test options to make sure they work right and make sense
+* aliases, probably in an rc file
+* add -n for no-newline (like C<echo>)
+
 =cut
