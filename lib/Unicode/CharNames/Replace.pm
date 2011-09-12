@@ -74,4 +74,10 @@ sub _charnames_re_str {
 
 =head1 DESCRIPTION
 
+=head1 SEE ALSO
+
+=for :list
+* L<unirep> - Command line version that works like C<echo> or C<cat>
+
+
 =cut
