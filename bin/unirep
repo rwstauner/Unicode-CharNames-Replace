@@ -1,0 +1,45 @@
+#!/bin/sh
+#!perl # vim: set filetype=perl:
+eval 'exec perl -x -C -wS $0 ${1+"$@"}'
+  if 0;
+# the above voodoo sends the -C switch to perl
+# (see `perldoc perlrun` for the rest of it).
+
+# PODNAME: unirep
+# ABSTRACT: Easily replace unicode charnames with characters on the command line
+
+use strict;
+use warnings;
+use Unicode::CharNames::Replace qw( replace_charnames );
+use Getopt::Long; # core
+use Pod::Usage;   # core
+
+my $opts = {
+  delimited    => 1,
+  loose        => 1,
+  insensitive  => 1,
+  boundaries   => 1,
+  help => 0,
+};
+
+GetOptions($opts, qw(
+  delimited|d!
+  loose|l!
+  insensitive|i!
+  boundaries!
+  help
+))
+  or pod2usage(2);
+pod2usage(1) if delete $opts->{help};
+$opts->{noboundaries} = !delete $opts->{boundaries};
+
+# echo
+if( @ARGV ){
+  print replace_charnames(join(' ', @ARGV), $opts), "\n";
+}
+# cat
+else {
+  while(<>){
+    print replace_charnames($_, $opts);
+  }
+}
