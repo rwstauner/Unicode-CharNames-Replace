@@ -35,9 +35,14 @@ sub loose {
   my $string = shift;
   my $opts   = shift || {};
   my $re = _charnames_re_str();
+
   $re = $opts->{insensitive} || $opts->{i}
     ? qr/$re/i
     : qr/$re/;
+
+  $re = qr/\b$re\b/
+    unless $opts->{nobounaries} || $opts->{nb};
+
   $string =~ s/($re)/charnames::string_vianame(uc($1)) || $1/ge;
   return $string;
 }

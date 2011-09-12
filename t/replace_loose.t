@@ -13,6 +13,8 @@ my @tests = (
   [  '(heavy black heart)',      {i => 1},   "(\x{2764})",      'wrapped in parens, nothing else'],
   ['black club suit  <=>  white club suit', {i => 1}, "\x{2663}  <=>  \x{2667}", '2 charnames'],
   ["BLACK CLUB SUIT \n-\n WHITE CLUB SUIT", {      }, "\x{2663} \n-\n \x{2667}", 'across newlines'],
+  ["HIBLACK CLUB SUITS \n-\n WHITE CLUB SUIT", {       }, "HIBLACK CLUB SUITS \n-\n \x{2667}", 'respect word boundaries'],
+  ["HIBLACK CLUB SUITS \n-\n WHITE CLUB SUIT", {nb => 1}, "HI\x{2663}S \n-\n \x{2667}", 'ignore word boundaries'],
   ["hi.LINE FEED (LF)", {TODO => 'FIXME: /\)$/ does not count as a word boundary...'}, "hi.\n", 'works with charnames outside the [\w\s-] class'],
   # unknown chars are just the rest of the string
   ["CharThatCannot PossiblyExist", {}, "CharThatCannot PossiblyExist", 'invalid char stays'],
