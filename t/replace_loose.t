@@ -9,6 +9,8 @@ my @tests = (
   [  'i heavy black heart perl', {},       "i heavy black heart perl", 'lower case not replaced without option'],
   [  'i heavy black heart perl', {i => 1}, "i \x{2764} perl",          'lower case replaced'],
   [  'i heavy black heart perl', {i => 0}, "i heavy black heart perl", 'lower case not replaced with false option'],
+  ['i (heavy black heart) perl', {i => 1}, "i (\x{2764}) perl", 'wrapped in parens'],
+  [  '(heavy black heart)',      {i => 1},   "(\x{2764})",      'wrapped in parens, nothing else'],
   ['black club suit  <=>  white club suit', {i => 1}, "\x{2663}  <=>  \x{2667}", '2 charnames'],
   ["BLACK CLUB SUIT \n-\n WHITE CLUB SUIT", {      }, "\x{2663} \n-\n \x{2667}", 'across newlines'],
   ["hi.LINE FEED (LF)", {TODO => 'FIXME: /\)$/ does not count as a word boundary...'}, "hi.\n", 'works with charnames outside the [\w\s-] class'],
