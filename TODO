@@ -1,6 +1,6 @@
 - uniecho I HEAVY BLACK HEART metacpan
 - test escaped \{
-- test unknown char
+- option for ignoring non-printing characters (CHARACTER TABULATION, LINE FEED (LF), SPACE, NULL)
 - app:
   - -i case insensitive qr/(?i:$RE)/
   - no args: STDIN (cat)
