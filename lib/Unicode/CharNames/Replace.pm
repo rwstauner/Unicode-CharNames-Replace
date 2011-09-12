@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 package Unicode::CharNames::Replace;
-# ABSTRACT: undef
+# ABSTRACT: Replace unicode charnames with characters at runtime
 use Sub::Exporter -setup => {
   exports => [
     #map { ("replace_$_" => \
