@@ -1,6 +1,7 @@
 # vim: set ts=2 sts=2 sw=2 expandtab smarttab:
 use strict;
 use warnings;
+use 5.014; # charnames::string_vianame() requires 5.14; this could be relaxed by switching to vianame()
 
 package Unicode::CharNames::Replace;
 # ABSTRACT: Replace unicode charnames with characters at runtime
