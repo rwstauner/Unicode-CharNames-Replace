@@ -9,6 +9,7 @@ use Sub::Exporter -setup => {
     #map { ("replace_$_" => \
     delimited =>
     loose     =>
+    replace_charnames =>
   ],
 #  groups => {
 #    default => {
@@ -18,6 +19,16 @@ use Sub::Exporter -setup => {
 };
 
 use charnames ':full';
+
+sub replace_charnames {
+  my $string = shift;
+  # FIXME: what should the default be?
+  my $opts   = shift || die q[Without options replace_charnames does nothing];
+  # delimited first so that we don't strip out charnames and end up with extra braces
+  $string = delimited($string, $opts) if $opts->{delimited};
+  $string = loose(    $string, $opts) if $opts->{loose};
+  return $string;
+}
 
 sub delimited {
   my $string = shift;
