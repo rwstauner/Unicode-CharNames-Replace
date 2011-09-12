@@ -43,3 +43,18 @@ else {
     print replace_charnames($_, $opts);
   }
 }
+
+=head1 OPTIONS
+
+Options are enabled by default for ease of use.
+
+Specify C<--no-option> to turn C<option> off.
+
+=for :list
+* C<delimited> - replace delimited charnames: "find {CHARNAME}"
+* C<loose> - replace loose charnames: "find CHARNAME"
+* C<insensitive> - case-insensitive search for carnames: "find charname"
+* C<boundaries> - restrict matches to word boundaries: "findcharname" does not replace
+* C<help> - you're looking at it
+
+=cut
