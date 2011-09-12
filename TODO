@@ -1,0 +1,7 @@
+- uniecho I HEAVY BLACK HEART metacpan
+- test escaped \{
+- test unknown char
+- app:
+  - -i case insensitive qr/(?i:$RE)/
+  - no args: STDIN (cat)
+  - -n no newline
