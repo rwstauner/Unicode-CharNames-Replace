@@ -28,6 +28,21 @@ sub delimited {
   return $string;
 }
 
+sub loose {
+  my $string = shift;
+  my $opts   = shift || {};
+  my $re = _charnames_re_str();
+  $re = $opts->{insensitive} || $opts->{i}
+    ? qr/$re/i
+    : qr/$re/;
+  $string =~ s/($re)/charnames::string_vianame(uc($1)) || $1/ge;
+  return $string;
+}
+
+my $charnames_re_str;
+sub _charnames_re_str {
+  return $charnames_re_str ||= join '|', map { (split(/\t/))[1] } split /\n/, require 'unicore/Name.pl';
+}
 
 1;
 
