@@ -19,7 +19,7 @@ my $opts = {
   loose        => 1,
   insensitive  => 1,
   boundaries   => 1,
-  help => 0,
+  help         => undef,
 };
 
 GetOptions($opts, qw(
@@ -27,10 +27,14 @@ GetOptions($opts, qw(
   loose|l!
   insensitive|i!
   boundaries!
-  help
+  help!
 ))
   or pod2usage(2);
-pod2usage(1) if delete $opts->{help};
+
+my $help = delete $opts->{help};
+pod2usage(1) if $help;
+die qq[\x{1F61D}\n] if defined $help; # easter egg
+
 $opts->{noboundaries} = !delete $opts->{boundaries};
 
 # echo
