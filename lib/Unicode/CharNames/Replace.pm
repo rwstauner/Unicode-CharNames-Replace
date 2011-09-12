@@ -39,9 +39,13 @@ sub loose {
   return $string;
 }
 
-my $charnames_re_str;
+my $_charnames_re_str;
 sub _charnames_re_str {
-  return $charnames_re_str ||= join '|', map { (split(/\t/))[1] } split /\n/, require 'unicore/Name.pl';
+  return $_charnames_re_str ||= join '|',
+    map {
+      quotemeta( (split(/\t/))[1] )
+    }
+    split /\n/, require 'unicore/Name.pl';
 }
 
 1;
