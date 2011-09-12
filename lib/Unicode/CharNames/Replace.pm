@@ -24,7 +24,10 @@ sub delimited {
   my $opts   = shift || {};
   my $start  = $opts->{start} || qr/(?:\\N)?\{/;
   my $end    = $opts->{end}   || qr/\}/;
+
+  # this regexp is currently naively simple but currently so are charnames - 2011-09-12 rwstauner
   $string =~ s/(${start})(.+?)(${end})/charnames::string_vianame(uc($2)) || ($1.$2.$3)/ge;
+
   return $string;
 }
 
