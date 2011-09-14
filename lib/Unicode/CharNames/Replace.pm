@@ -88,6 +88,7 @@ sub _charnames_re_str {
 * Document usefulness (runtime)
 * Make use of Sub::Exporter with default options, etc
 * Allow for escaping the opening delimiter?
+* If delimited item is not exact, try matching as a regexp
 * By default ignore non-printing characters (CHARACTER TABULATION, LINE FEED (LF), SPACE, NULL) to avoid confusion
 * aliases?  is this necessary beyond the alias functionality of charnames?
 * a set of default aliases (heart, poo, razzberry)?
