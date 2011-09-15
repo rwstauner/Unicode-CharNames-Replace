@@ -8,7 +8,7 @@ package Unicode::CharNames::Replace;
 use Sub::Exporter -setup => {
   exports => [
     #map { ("replace_$_" => \
-    delimited =>
+    replace_delimited =>
     replace_bare      =>
     replace_charnames =>
   ],
@@ -25,13 +25,13 @@ sub replace_charnames {
   my $string = shift;
   # FIXME: what should the default be?
   my $opts   = shift || die q[Without options replace_charnames does nothing];
-  # delimited first so that we don't strip out charnames and end up with extra braces
-  $string = delimited($string, $opts) if $opts->{delimited};
+  # delimited first so that we don't strip out charnames and leave delimiters behind
+  $string = replace_delimited($string, $opts) if $opts->{delimited};
   $string = replace_bare(     $string, $opts) if $opts->{bare};
   return $string;
 }
 
-sub delimited {
+sub replace_delimited {
   my $string = shift;
   my $opts   = shift || {};
   my $start  = $opts->{start} || qr/(?:\\N)?\{/;

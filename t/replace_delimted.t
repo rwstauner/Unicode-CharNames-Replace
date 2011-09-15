@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use Test::More;
-use Unicode::CharNames::Replace qw( delimited );
+use Unicode::CharNames::Replace qw( replace_delimited );
 
 my @tests = (
   ['i \N{HEAVY BLACK HEART} perl', "i \x{2764} perl", 'backslash N'],
@@ -18,5 +18,5 @@ plan tests => scalar @tests;
 
 foreach my $test ( @tests ){
   my ($str, $exp, $desc) = @$test;
-  is delimited($str), $exp, $desc;
+  is replace_delimited($str), $exp, $desc;
 }
