@@ -72,9 +72,32 @@ sub _charnames_re_str {
 
 1;
 
+=encoding utf8
+
+=for test_synopsis
+my ($str);
+
 =head1 SYNOPSIS
 
+  use Unicode::CharNames::Replace qw( replace_charnames );
+
+  my $str = replace_charnames($input, \%options);
+
 =head1 DESCRIPTION
+
+This module provides functions for replacing unicode character names
+with their corresponding characters at runtime.
+
+The L<charnames> pragma provides a way to place "\N{CHARNAME}" into
+strings, but it does this at compile time.
+This module will search for character names in strings
+created dynamically during your program's execution,
+for example, from user input.
+
+The use-case that was the impetus for this module
+is the provided L<unirep> script
+which replaces charnames with characters
+from C<@ARGV> or C<< <STDIN> >>.
 
 =head1 SEE ALSO
 
@@ -87,7 +110,6 @@ sub _charnames_re_str {
 * relax requirement for 5.14
 * Rename methods
 * Document methods
-* Document usefulness (runtime)
 * Make use of Sub::Exporter with default options, etc
 * Allow for escaping the opening delimiter?
 * If delimited item is not exact, try matching as a regexp
