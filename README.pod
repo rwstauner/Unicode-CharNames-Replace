@@ -1,4 +1,21 @@
+﻿=encoding utf8
+
 =head1 Unicode::CharNames::Replace
+
+Replace unicode character names with unicode characters
+similar to L<charnames> but at runtime.
+
+Provided L<unirep> script enables this functionality
+from the command line:
+
+  $ unirep i heavy black heart perl
+  i ❤ perl
+
+  $ echo cards: black\ {spade,club,heart,diamond}\ suit | unirep
+  cards: ♠ ♣ ♥ ♦
+
+The module provides exportable functions
+for reuse in other modules.
 
 See module POD for more information.
 
