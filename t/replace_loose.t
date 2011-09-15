@@ -16,6 +16,7 @@ my @tests = (
   ["HIBLACK CLUB SUITS \n-\n WHITE CLUB SUIT", {       }, "HIBLACK CLUB SUITS \n-\n \x{2667}", 'respect word boundaries'],
   ["HIBLACK CLUB SUITS \n-\n WHITE CLUB SUIT", {nb => 1}, "HI\x{2663}S \n-\n \x{2667}", 'ignore word boundaries'],
   ["hi.LINE FEED (LF)", {TODO => 'FIXME: /\)$/ does not count as a word boundary...'}, "hi.\n", 'works with charnames outside the [\w\s-] class'],
+  [join(' ', 'cards:', map { "black $_ suit" } qw(spade club heart diamond)), {i => 1}, "cards: \x{2660} \x{2663} \x{2665} \x{2666}", 'longest possible match'],
   # unknown chars are just the rest of the string
   ["CharThatCannot PossiblyExist", {}, "CharThatCannot PossiblyExist", 'invalid char stays'],
 );

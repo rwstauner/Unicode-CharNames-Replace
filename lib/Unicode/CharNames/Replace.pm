@@ -65,6 +65,8 @@ sub _charnames_re_str {
     map {
       quotemeta( (split(/\t/))[1] )
     }
+    # match longest possible char name first
+    sort { length($b) <=> length($a) }
     split /\n/, require 'unicore/Name.pl';
 }
 
