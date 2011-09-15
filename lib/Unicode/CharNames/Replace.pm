@@ -24,7 +24,8 @@ use Sub::Exporter -setup => {
   ]
 };
 
-use charnames ':full';
+# should this be configurable?
+use charnames qw( :full :short );
 
 # enable default args in imported function
 sub _build_replacer {
