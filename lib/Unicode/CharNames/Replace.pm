@@ -50,6 +50,7 @@ sub replace_delimited {
   my $start  = $opts->{start} || qr/(?:\\N)?\{/;
   my $end    = $opts->{end}   || qr/\}/;
 
+  # FIXME: should this only call uc() if $opts->{insensitive}
   # this regexp is currently naively simple but currently so are charnames - 2011-09-12 rwstauner
   $string =~ s/(${start})(.+?)(${end})/charnames::string_vianame(uc($2)) || ($1.$2.$3)/ge;
 
@@ -156,6 +157,7 @@ Character name sequences do not need to be delimited:
 * If delimited item is not exact, try matching as a regexp
 * By default ignore non-printing characters (CHARACTER TABULATION, LINE FEED (LF), SPACE, NULL) to avoid confusion
 * aliases?  is this necessary beyond the alias functionality of charnames?
+* get list of aliases from charnames for replace_bare
 * a set of default aliases (heart, poo, razzberry)?
 
 =cut
