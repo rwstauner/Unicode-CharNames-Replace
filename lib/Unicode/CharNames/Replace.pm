@@ -7,19 +7,30 @@ package Unicode::CharNames::Replace;
 # ABSTRACT: Replace unicode charnames with characters at runtime
 use Sub::Exporter -setup => {
   exports => [
-    #map { ("replace_$_" => \
     replace_delimited =>
     replace_bare      =>
-    replace_charnames =>
+    replace_charnames => \&_build_replacer,
   ],
-#  groups => {
-#    default => {
-#      -prefix => 'replace_'
-#    }
-#  }
+  groups  => [
+    replace_all => [
+      replace_charnames => {
+        delimited   => 1,
+        bare        => 1,
+        match       => 1,
+        insensitive => 1,
+      },
+    ]
+  ]
 };
 
 use charnames ':full';
+
+# enable default args in imported function
+sub _build_replacer {
+  my ($class, $name, $args, $collected) = @_;
+  my $defargs = { %$collected, %$args };
+  return sub { replace_charnames(shift, { %$defargs, %{ shift || {} } }); };
+}
 
 sub replace_charnames {
   my $string = shift;
@@ -110,7 +121,7 @@ from C<@ARGV> or C<< <STDIN> >>.
 * relax requirement for 5.14
 * Rename methods
 * Document methods
-* Make use of Sub::Exporter with default options, etc
+* test exports
 * Allow for escaping the opening delimiter?
 * If delimited item is not exact, try matching as a regexp
 * By default ignore non-printing characters (CHARACTER TABULATION, LINE FEED (LF), SPACE, NULL) to avoid confusion
