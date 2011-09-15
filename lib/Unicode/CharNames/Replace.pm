@@ -2,6 +2,7 @@
 use strict;
 use warnings;
 use 5.014; # charnames::string_vianame() requires 5.14; this could be relaxed by switching to vianame()
+use utf8;
 
 package Unicode::CharNames::Replace;
 # ABSTRACT: Replace unicode charnames with characters at runtime
@@ -109,6 +110,34 @@ The use-case that was the impetus for this module
 is the provided L<unirep> script
 which replaces charnames with characters
 from C<@ARGV> or C<< <STDIN> >>.
+
+=head1 OPTIONS
+
+The following options can be passed to L</replace_charnames>
+(or specified during import):
+
+=begin :list
+
+* C<delimited> - Replaces delimited character names in the string.
+This will find sequences like "\N{CHARNAME}" and replace them
+with unicode characters much like L<charnames>.
+
+  "i \N{HEAVY BLACK HEART} perl" => "i ❤ perl"
+
+* C<bare> - Replaces bare character names found in the string.
+Character name sequences do not need to be delimited:
+
+  "i HEAVY BLACK HEART perl" => "i ❤ perl"
+
+* C<insensitive> - Matches names in a case-insensitive manner.
+
+  "i heavy black heart perl" => "i ❤ perl"
+
+* C<noboundaries> - Does not require charnames to occur at word boundaries.
+
+  "iheavy black heartperl" => "i❤perl"
+
+=end :list
 
 =head1 SEE ALSO
 
