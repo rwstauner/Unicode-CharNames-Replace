@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use Test::More;
-use Unicode::CharNames::Replace qw( loose );
+use Unicode::CharNames::Replace qw( replace_bare );
 
 # TODO: test that shorter names don't chop up longer ones (and sort by length to fix it)
 my @tests = (
@@ -26,5 +26,5 @@ plan tests => scalar @tests;
 foreach my $test ( @tests ){
   my ($str, $opts, $exp, $desc) = @$test;
   local $TODO = delete $opts->{TODO} if $opts->{TODO};
-  is loose($str, $opts), $exp, $desc;
+  is replace_bare($str, $opts), $exp, $desc;
 }

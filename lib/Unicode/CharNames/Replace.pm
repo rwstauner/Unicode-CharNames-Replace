@@ -9,7 +9,7 @@ use Sub::Exporter -setup => {
   exports => [
     #map { ("replace_$_" => \
     delimited =>
-    loose     =>
+    replace_bare      =>
     replace_charnames =>
   ],
 #  groups => {
@@ -27,7 +27,7 @@ sub replace_charnames {
   my $opts   = shift || die q[Without options replace_charnames does nothing];
   # delimited first so that we don't strip out charnames and end up with extra braces
   $string = delimited($string, $opts) if $opts->{delimited};
-  $string = loose(    $string, $opts) if $opts->{loose};
+  $string = replace_bare(     $string, $opts) if $opts->{bare};
   return $string;
 }
 
@@ -43,7 +43,7 @@ sub delimited {
   return $string;
 }
 
-sub loose {
+sub replace_bare {
   my $string = shift;
   my $opts   = shift || {};
   my $re = _charnames_re_str();

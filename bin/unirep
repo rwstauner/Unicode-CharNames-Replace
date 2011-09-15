@@ -16,7 +16,7 @@ use Pod::Usage;   # core
 
 my $opts = {
   delimited    => 1,
-  loose        => 1,
+  bare         => 1,
   insensitive  => 1,
   boundaries   => 1,
   help         => undef,
@@ -24,7 +24,7 @@ my $opts = {
 
 GetOptions($opts, qw(
   delimited|d!
-  loose|l!
+  bare|b!
   insensitive|i!
   boundaries!
   help!
@@ -56,7 +56,7 @@ Specify C<--no-option> to turn C<option> off.
 
 =for :list
 * C<delimited> - replace delimited charnames: "find {CHARNAME}"
-* C<loose> - replace loose charnames: "find CHARNAME"
+* C<bare> - replace bare charnames: "find CHARNAME"
 * C<insensitive> - case-insensitive search for carnames: "find charname"
 * C<boundaries> - restrict matches to word boundaries: "findcharname" does not replace
 * C<help> - you're looking at it
