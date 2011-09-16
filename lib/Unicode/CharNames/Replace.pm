@@ -149,7 +149,7 @@ Character name sequences do not need to be delimited:
 =head1 TODO
 
 =for :list
-* relax requirement for 5.14
+* relax perl version requirement (currently 5.14)
 * Rename methods
 * Document methods
 * test exports
@@ -159,5 +159,7 @@ Character name sequences do not need to be delimited:
 * aliases?  is this necessary beyond the alias functionality of charnames?
 * get list of aliases from charnames for replace_bare
 * a set of default aliases (heart, poo, razzberry)?
+* options for limiting charnames to specfied scripts/blocks?
+* options for matching omitted (specified) prefix?
 
 =cut
