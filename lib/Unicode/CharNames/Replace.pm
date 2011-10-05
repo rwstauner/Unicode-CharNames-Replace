@@ -152,7 +152,8 @@ Character name sequences do not need to be delimited:
 * relax perl version requirement (currently 5.14)
 * Rename methods
 * Document methods
-* test exports
+* Create OO interface
+* Probably replace Sub::Exporter with a simple closure around an OO instance
 * Allow for escaping the opening delimiter?
 * If delimited item is not exact, try matching as a regexp
 * By default ignore non-printing characters (CHARACTER TABULATION, LINE FEED (LF), SPACE, NULL) to avoid confusion
